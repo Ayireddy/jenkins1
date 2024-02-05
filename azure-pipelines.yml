@@ -1,0 +1,23 @@
+trigger:
+- main
+
+pool:
+  name: YourCustomPool  # Replace with the name of your custom pool
+  demands:
+    - agent.name -equals agent1  # Replace with the specific agent name
+
+jobs:
+- job: BuildAndTest
+  displayName: 'Build and Test'
+  pool:
+    name: YourCustomPool  # Specify the pool for this job
+  demands:
+    - agent.name -equals agent1  # Specify the agent name for this job
+  steps:
+  - script: echo Hello, world!
+    displayName: 'Run a one-line script'
+
+  - script: |
+      echo Add other tasks to build, test, and deploy your project.
+      echo See https://aka.ms/yaml
+    displayName: 'Run a multi-line script'
