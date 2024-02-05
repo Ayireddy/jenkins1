@@ -8,15 +8,15 @@ trigger:
 
 pool:
   name: agent  # Set the pool name as "agent"
-  vmImage: ubuntu-latest
+  demands:
+    - agent.name -equals agent1  # Specify the agent name for this job
 
 jobs:
 - job: BuildAndTest
   displayName: 'Build and Test'
   pool:
     name: agent  # Specify the pool for this job
-  demands:
-    - agent.name -equals agent1  # Specify the agent name for this job
+  
   steps:
   - script: echo Hello, world!
     displayName: 'Run a one-line script'
